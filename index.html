@@ -245,9 +245,10 @@
         };
 
         if (password === passwords[currentServer]) {
+            Swal.showValidationMessage('Thành công, vui lòng ấn vào ô mở steam để tiếp tục');
             window.location.href = serverAddresses[currentServer];
         } else {
-            Swal.showValidationMessage('Incorrect password');
+            Swal.showValidationMessage('Mật khẩu sai!');
         }
     }
 </script>
