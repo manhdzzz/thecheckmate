@@ -4,482 +4,254 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CS2 Server</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CS2 Server</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        /* Tối ưu hóa thiết kế */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #44028f;
+            color: #ffffff;
+        }
+
+        header {
+            background: #43b7fa;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .nav-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .navbar-logo {
+            width: 120px;
+            margin: 0 15px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #860303;
+            border: none;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .card-header {
+            background-color: #0ae4ad;
+            border-bottom: none;
+        }
+
+        .table th, .table td {
+            color: #000;
+            vertical-align: middle;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #ffcc00;
+        }
+
+        .link-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ffaa00;
+            border-radius: 5px;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .link-button:hover {
+            background-color: #ffcc00;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .connect-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .connect-btn.offline {
+            background-color: #dc3545;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .navbar-logo {
+                width: 80px;
+            }
+
+            .card {
+                margin: 10px 0;
+            }
+
+            .link-button {
+                padding: 8px 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="nav-logo">
-            <div class="nav-item theme-logo">
-                <a href="">
-                    <img src="img/logo.png" class="navbar-logo logo-light" alt="logo">
-                </a>
-            </div>
-            <div class="nav-item theme-text">
-                <h1>THE CHECKMATE SERVER CS2</h1>
-            </div>
-            <div class="nav-item theme-logo">
-                <a href="">
-                    <img src="img/logo.png" class="navbar-logo logo-light" alt="logo">
-                </a>
-            </div>
-        </div>
-    </header>
-    </header>
-    <style>
-        body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #44028f;
-    color: #ffffff;
-}
 
-.card {
-    background-color: #860303; /* Ð?i thành màu den */
-    border: none;
-    border-radius: 8px;
-    margin: 20px;
-}
+<header>
+    <div class="nav-logo">
+        <a href="#"><img src="img/logo.png" class="navbar-logo logo-light" alt="logo"></a>
+        <h1>THE CHECKMATE SERVER CS2</h1>
+        <a href="#"><img src="img/logo.png" class="navbar-logo logo-light" alt="logo"></a>
+    </div>
+</header>
 
-.card-header {
-    background-color: #0ae4ad; /* Ð?i thành màu den */
-    border-bottom: none;
-}
-
-.table th, .table td {
-    vertical-align: middle;
-    color: #000000; /* Màu den cho ch? trong b?ng */
-}
-
-.section-title {
-    text-align: center;
-    color: #37015a;
-    margin-top: 20px;
-}
-
-.container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.sub-container {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-}
-
-.btn-permanent {
-    background-color: #ffc107;
-    border: none;
-    color: #000;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
-.card-space {
-    margin-top: 20px;
-}
-
-header {
-    background: #43b7fa;
-    padding: 30px;
-    text-align: center;
-    position: relative;
-}
-
-.nav-logo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #43b7fa;
-    padding: 20px;
-}
-
-header #branding {
-    float: left;
-}
-
-header #branding h1 {
-    margin: 0;
-}
-
-header nav {
-    float: right;
-    margin-top: 10px;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 4em;
-    font-weight: bold;
-    color: #ffffff;
-}
-
-main {
-    padding: 20px;
-}
-
-section {
-    margin-bottom: 20px;
-}
-
-h2 {
-    color: #ffcc00;
-}
-
-p, li {
-    font-size: 1.2em;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-li {
-    background: #ffffff;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background 0.3s ease;
-}
-
-li:hover {
-    background: #ffffff;
-    color: #000000;
-}
-
-li a {
-    color: inherit;
-    text-decoration: none;
-}
-
-li a:hover {
-    text-decoration: underline;
-}
-
-footer {
-    background: #1a1a1a;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
-
-footer p {
-    margin: 0;
-}
-
-button {
-    display: inline-block;
-    background-color: #ffcc00;
-    color: #000000;
-    border: none;
-    padding: 5px 10px;
-    margin-left: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #ffaa00;
-}
-
-.navbar-logo {
-    width: 150px; /* Thay d?i kích thu?c icon */
-    height: auto;
-}
-
-.link-button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #ffffff; /* Màu tr?ng cho ch? */
-    background-color: #ffaa00;
-    border: none;
-    border-radius: 5px;
-    text-align: center;
-    text-decoration: none;
-}
-
-.link-button:hover {
-    background-color: #ffaa00;
-}
-
-.connect-button {
-    background-color: #28a745; /* Màu xanh lá cây cho nút online */
-    color: white; /* Màu ch? tr?ng */
-    padding: 10px 20px; /* Ð?m trong */
-    text-align: center; /* Canh gi?a van b?n */
-    text-decoration: none; /* B? g?ch chân */
-    display: inline-block; /* Hi?n th? theo kh?i */
-    font-size: 16px; /* Kích thu?c ch? */
-    margin: 4px 2px; /* L? */
-    cursor: pointer; /* Con tr? chu?t */
-    border: none; /* Không vi?n */
-    border-radius: 5px; /* Bo góc */
-}
-
-.connect-button.offline {
-    background-color: #dc3545; /* Màu d? cho nút offline */
-}
-
-.table-responsive {
-    background-color: #ffffff; /* Ð?t n?n b?ng màu xám nh?t */
-}
-
-.table-hover tbody tr:hover td {
-    background-color: #ffffff; /* Ð?i màu n?n hàng khi hover */
-}
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding: 500px 500px;
-    border-radius: 5px;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-  }
-  .modal-content {
-    background-color: white;
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
-    position: relative;
-    
-  }
-  .connect-btn {
-    background-color: green;
-    color: white;
-    padding: 5px 5px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    height: 35px;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    color: red;
-  }
-
-    </style>
-    <main>
-        <section class="mb-4">
+<main>
+    <div class="container">
+        <!-- Servers Section -->
+        <section>
             <div class="card">
                 <div class="card-header text-center py-3">
-                    <h5 class="mb-0 text-center">
-                        <strong>Servers</strong>
-                    </h5>
+                    <h5><strong>Servers</strong></h5>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-hover text-nowrap table-borderless">
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">Server</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col"></th>
+                                    <th>Server</th>
+                                    <th>Status</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody id="serverList">
                                 <tr>
-                                    <td>PvP 5v5 for free .............. | by The Checkmate #1</td>
+                                    <td>PvP 5v5 for free | by The Checkmate #1</td>
                                     <td id="server-name1">online</td>
-                                    <td>
-                                        <button class="connect-btn" onclick="openModal('Server 1')">Connect</button>
-                                        <div id="modal" class="modal">
-                                            <div class="modal-content">
-                                              <span class="close" id="closeModal">&times;</span> <!-- Nút đóng "X" -->
-                                              <h3 id="modalTitle">Enter Password</h3>
-                                              <input type="password" id="password" placeholder="Password">
-                                              <button class="connect-btn" onclick="validatePassword()">Submit</button>
-                                              <p id="error-msg" style="color: red; display: none;">Incorrect password</p>
-                                            </div>
-                                          </div>
-                                    </td>
+                                    <td><button class="connect-btn" onclick="openModal('Server 1')">Connect</button></td>
                                 </tr>
                                 <tr>
-                                    <td>Retake for free ................ | by The Checkmate #2</td>
+                                    <td>Retake for free | by The Checkmate #2</td>
                                     <td id="server-name2">online</td>
-                                    <td>
-                                        <button class="connect-btn" onclick="openModal('Server 2')">Connect</button>
-                                        <div id="modal" class="modal">
-                                            <div class="modal-content">
-                                              <span class="close" id="closeModal">&times;</span> <!-- Nút đóng "X" -->
-                                              <h3 id="modalTitle">Enter Password</h3>
-                                              <input type="password" id="password" placeholder="Password">
-                                              <button class="connect-btn" onclick="validatePassword()">Submit</button>
-                                              <p id="error-msg" style="color: red; display: none;">Incorrect password</p>
-                                            </div>
-                                          </div>
-                                    </td>
+                                    <td><button class="connect-btn" onclick="openModal('Server 2')">Connect</button></td>
                                 </tr>
                                 <tr>
-                                    <td>PVP 1v1...................... | by The Checkmate #3</td>
+                                    <td>PvP 1v1 | by The Checkmate #3</td>
                                     <td id="server-name3">online</td>
-                                    <td>
-                                        <button class="connect-btn" onclick="openModal('Server 3')">Connect</button>
-                                        <div id="modal" class="modal">
-                                            <div class="modal-content">
-                                              <span class="close" id="closeModal">&times;</span> <!-- Nút đóng "X" -->
-                                              <h3 id="modalTitle">Enter Password</h3>
-                                              <input type="password" id="password" placeholder="Password">
-                                              <button class="connect-btn" onclick="validatePassword()">Submit</button>
-                                              <p id="error-msg" style="color: red; display: none;">Incorrect password</p>
-                                            </div>
-                                          </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>PvP 5v5 server event 1 | by The Checkmate #4</td>
-                                    <td id="server-name4">on</td>
-                                    <td>
-                                        <button class="connect-btn" onclick="openModal('Server 4')">Connect</button>
-                                        <div id="modal" class="modal">
-                                            <div class="modal-content">
-                                              <span class="close" id="closeModal">&times;</span> <!-- Nút đóng "X" -->
-                                              <h3 id="modalTitle">Enter Password</h3>
-                                              <input type="password" id="password" placeholder="Password">
-                                              <button class="connect-btn" onclick="validatePassword()">Submit</button>
-                                              <p id="error-msg" style="color: red; display: none;">Incorrect password</p>
-                                            </div>
-                                          </div>
-                                    </td>
-                                </tr>
-                                 <tr>
-                                    <td>PvP 5v5 server event 2 | by The Checkmate #5</td>
-                                    <td id="server-name4">on</td>
-                                    <td>
-                                        <button class="connect-btn" onclick="openModal('Server 5')">Connect</button>
-                                        <div id="modal" class="modal">
-                                            <div class="modal-content">
-                                              <span class="close" id="closeModal">&times;</span> <!-- Nút đóng "X" -->
-                                              <h3 id="modalTitle">Enter Password</h3>
-                                              <input type="password" id="password" placeholder="Password">
-                                              <button class="connect-btn" onclick="validatePassword()">Submit</button>
-                                              <p id="error-msg" style="color: red; display: none;">Incorrect password</p>
-                                            </div>
-                                          </div>
-                                    </td>
+                                    <td><button class="connect-btn" onclick="openModal('Server 3')">Connect</button></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <section class="mb-4">
-                    <div class="card">
-                        <div class="card-header text-center py-3">
-                            <h5 class="mb-0 text-center">
-                                <strong>ModSkins Và liên hệ thuê Server</strong>
-                            </h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-hover text-nowrap table-borderless">
-                                    <thead>
-                                        <tr>
-                                        </tr>
-                                    </thead>
-                                        <tr>
-                                            <td>ModSkins</td>
-                                            <td><a href="http://160.25.85.100:27275/" class="link-button">Skins Changer</a></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Thuê Server</td>
-                                            <td><a href="https://www.facebook.com/nguyenheng2707" class="link-button">Renting</a></td>
-                                        </tr>             
-    </main>
-    <script>
-        function connectToServer(serverAddress) {
-    // Tạo URL steam để kết nối tới server CS:GO
-    const steamUrl = 'steam://connect/' + serverAddress;
-    window.location.href = steamUrl;
-}
-async function checkServerStatus(serverAddress, buttonId) {
-    try {
-        const response = await fetch(`http://localhost:3000/server-status?host=${serverAddress.split(':')[0]}&port=${serverAddress.split(':')[1]}`);
-        const data = await response.json();
+            </div>
+        </section>
 
-        if (data.onlinePlayers !== undefined) {
-            document.getElementById(buttonId).classList.remove('offline');
+        <!-- ModSkins & Rent Section -->
+        <section>
+            <div class="card">
+                <div class="card-header text-center py-3">
+                    <h5><strong>ModSkins & Server Renting</strong></h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <td>ModSkins</td>
+                                <td><a href="http://160.25.85.100:27275/" class="link-button">Skins Changer</a></td>
+                            </tr>
+                            <tr>
+                                <td>Rent Server</td>
+                                <td><a href="https://www.facebook.com/nguyenheng2707" class="link-button">Renting</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 The Checkmate Server</p>
+</footer>
+
+<!-- SweetAlert2 script -->
+<script>
+    let currentServer = ''; // Lưu server hiện tại
+
+    function openModal(serverName) {
+        currentServer = serverName;
+        Swal.fire({
+            title: `Enter Password for ${serverName}`,
+            input: 'password',
+            inputPlaceholder: 'Password',
+            showCancelButton: true,
+            confirmButtonText: 'Submit',
+            showLoaderOnConfirm: true,
+            preConfirm: (password) => {
+                return new Promise((resolve) => {
+                    setTimeout(() => {
+                        resolve(validatePassword(password));
+                    }, 1000);
+                });
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+        });
+    }
+
+    function validatePassword(password) {
+        const passwords = {
+            'Server 1': '123456',
+            'Server 2': '',
+            'Server 3': ''
+        };
+
+        const serverAddresses = {
+            'Server 1': 'steam://connect/160.25.85.100:27015',
+            'Server 2': 'steam://connect/160.25.85.100:27017',
+            'Server 3': 'steam://connect/160.25.85.100:27019'
+        };
+
+        if (password === passwords[currentServer]) {
+            window.location.href = serverAddresses[currentServer];
         } else {
-            document.getElementById(buttonId).classList.add('offline');
+            Swal.showValidationMessage('Incorrect password');
         }
-    } catch (error) {
-        document.getElementById(buttonId).classList.add('offline');
     }
-}
+</script>
 
-document.addEventListener("DOMContentLoaded", function() {
-    checkServerStatus('160.25.85.100:27015', 'connect-button-1');
-    checkServerStatus('160.25.85.100:27017', 'connect-button-2');
-    checkServerStatus('160.25.85.100:27019', 'connect-button-3');
-});
-let currentServer = ''; // Biến để lưu tên server hiện tại
-
-  const modal = document.getElementById('modal');
-  const closeModal = document.getElementById('closeModal');
-
-  // Hàm mở modal và lưu server hiện tại
-  function openModal(serverName) {
-    currentServer = serverName; // Lưu lại server hiện tại
-    document.getElementById('modalTitle').textContent = `Enter Password for ${serverName}`;
-    modal.style.display = 'flex';
-  }
-
-  // Đóng modal khi bấm nút "X"
-  closeModal.addEventListener('click', () => {
-    modal.style.display = 'none';
-  });
-
-  // Đóng modal khi bấm ra ngoài
-  window.addEventListener('click', (event) => {
-    if (event.target === modal) {
-      modal.style.display = 'none';
-    }
-  });
-
-  // Hàm kiểm tra mật khẩu dựa trên server hiện tại
-  function validatePassword() {
-    const password = document.getElementById('password').value;
-    const errorMsg = document.getElementById('error-msg');
-
-    // Mật khẩu cho từng server
-    const passwords = {
-      'Server 1': '123456',
-      'Server 2': '',
-      'Server 3': '',
-      'Server 4': '123456',
-      'Server 5': '123456'
-    };
-    const serverAddresses = {
-        'Server 1': 'steam://connect/160.25.85.100:27015',
-        'Server 2': 'steam://connect/160.25.85.100:27017',
-        'Server 3': 'steam://connect/160.25.85.100:27019',
-        'Server 4': 'steam://connect/160.25.85.100:27021', 
-        'Server 5': 'steam://connect/160.25.85.100:27023'
-      };
-
-    // Kiểm tra mật khẩu
-    if (password === passwords[currentServer]) {
-      window.location.href =serverAddresses[currentServer]; // Điều hướng đến server tương ứng
-    } else {
-      errorMsg.style.display = 'block'; // Hiển thị thông báo lỗi
-    }
-  }
-    </script>
 </body>
 </html>
