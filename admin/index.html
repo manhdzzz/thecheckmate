@@ -44,7 +44,7 @@
 
     <h3>Server Management</h3>
 
-
+    <!-- Form to add new server -->
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Add New Server</h5>
@@ -58,7 +58,7 @@
 
     <br>
 
-
+    <!-- Table to manage existing servers -->
     <h3>Current Servers</h3>
     <div class="card">
         <div class="card-body">
@@ -71,7 +71,7 @@
                     </tr>
                 </thead>
                 <tbody id="serverListAdmin">
-
+                    <!-- Example data (will be replaced by JavaScript dynamically) -->
                     <tr>
                         <td>PvP 5v5 for free | by The Checkmate #1</td>
                         <td>online</td>
@@ -87,6 +87,7 @@
 
     <br>
 
+    <!-- Section to change background image -->
     <h3>Change Background</h3>
     <div class="card">
         <div class="card-body">
@@ -101,16 +102,17 @@
 </footer>
 
 <script>
-    let serverData = [
+    let serverData = JSON.parse(localStorage.getItem('servers')) || [
         { id: 1, name: 'PvP 5v5 for free | by The Checkmate #1', status: 'online' },
         { id: 2, name: 'Retake for free | by The Checkmate #2', status: 'online' },
         { id: 3, name: 'PvP 1v1 | by The Checkmate #3', status: 'online' }
     ];
 
+    // Load server list from localStorage
     function loadServerList() {
         let serverList = document.getElementById('serverListAdmin');
         serverList.innerHTML = '';
-        serverData.forEach((server, index) => {
+        serverData.forEach((server) => {
             serverList.innerHTML += `
                 <tr>
                     <td>${server.name}</td>
@@ -123,41 +125,50 @@
         });
     }
 
+    // Add new server and save to localStorage
     document.getElementById('addServerForm').addEventListener('submit', function (e) {
         e.preventDefault();
         const serverName = document.getElementById('serverName').value;
         const serverStatus = document.getElementById('serverStatus').value;
         const newServer = { id: serverData.length + 1, name: serverName, status: serverStatus };
         serverData.push(newServer);
+        localStorage.setItem('servers', JSON.stringify(serverData));
         loadServerList();
     });
 
+    // Delete a server
     function deleteServer(id) {
         serverData = serverData.filter(server => server.id !== id);
+        localStorage.setItem('servers', JSON.stringify(serverData));
         loadServerList();
     }
 
+    // Edit a server
     function editServer(id) {
         const server = serverData.find(server => server.id === id);
         const newStatus = prompt("Enter new status (online/offline):", server.status);
         if (newStatus) {
             server.status = newStatus;
+            localStorage.setItem('servers', JSON.stringify(serverData));
             loadServerList();
         }
     }
 
-
+    // Change background image and save to localStorage
     function changeBackground() {
         const newUrl = document.getElementById('backgroundUrl').value;
         if (newUrl) {
-            document.body.style.backgroundImage = `url('${newUrl}')`;
+            localStorage.setItem('backgroundImage', newUrl);
             alert('Background changed successfully!');
         } else {
             alert('Please enter a valid URL.');
         }
     }
 
-    window.onload = loadServerList;
+    // Load the initial server list and background on page load
+    window.onload = function () {
+        loadServerList();
+    };
 </script>
 
 </body>
