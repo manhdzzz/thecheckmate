@@ -1,0 +1,245 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #44028f;
+    color: #ffffff;
+}
+
+.card {
+    background-color: #860303; /* Ð?i thành màu den */
+    border: none;
+    border-radius: 8px;
+    margin: 20px;
+}
+
+.card-header {
+    background-color: #0ae4ad; /* Ð?i thành màu den */
+    border-bottom: none;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+    color: #000000; /* Màu den cho ch? trong b?ng */
+}
+
+.section-title {
+    text-align: center;
+    color: #37015a;
+    margin-top: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.sub-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.btn-permanent {
+    background-color: #ffc107;
+    border: none;
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.card-space {
+    margin-top: 20px;
+}
+
+header {
+    background: #43b7fa;
+    padding: 30px;
+    text-align: center;
+    position: relative;
+}
+
+.nav-logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #43b7fa;
+    padding: 20px;
+}
+
+header #branding {
+    float: left;
+}
+
+header #branding h1 {
+    margin: 0;
+}
+
+header nav {
+    float: right;
+    margin-top: 10px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 4em;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #ffcc00;
+}
+
+p, li {
+    font-size: 1.2em;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #ffffff;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+li:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+li a {
+    color: inherit;
+    text-decoration: none;
+}
+
+li a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    background: #1a1a1a;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+footer p {
+    margin: 0;
+}
+
+button {
+    display: inline-block;
+    background-color: #ffcc00;
+    color: #000000;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ffaa00;
+}
+
+.navbar-logo {
+    width: 150px; /* Thay d?i kích thu?c icon */
+    height: auto;
+}
+
+.link-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #ffffff; /* Màu tr?ng cho ch? */
+    background-color: #ffaa00;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.link-button:hover {
+    background-color: #ffaa00;
+}
+
+.connect-button {
+    background-color: #28a745; /* Màu xanh lá cây cho nút online */
+    color: white; /* Màu ch? tr?ng */
+    padding: 10px 20px; /* Ð?m trong */
+    text-align: center; /* Canh gi?a van b?n */
+    text-decoration: none; /* B? g?ch chân */
+    display: inline-block; /* Hi?n th? theo kh?i */
+    font-size: 16px; /* Kích thu?c ch? */
+    margin: 4px 2px; /* L? */
+    cursor: pointer; /* Con tr? chu?t */
+    border: none; /* Không vi?n */
+    border-radius: 5px; /* Bo góc */
+}
+
+.connect-button.offline {
+    background-color: #dc3545; /* Màu d? cho nút offline */
+}
+
+.table-responsive {
+    background-color: #ffffff; /* Ð?t n?n b?ng màu xám nh?t */
+}
+
+.table-hover tbody tr:hover td {
+    background-color: #ffffff; /* Ð?i màu n?n hàng khi hover */
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding: 500px 500px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-content {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    
+  }
+  .connect-btn {
+    background-color: green;
+    color: white;
+    padding: 5px 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 35px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: red;
+  }
