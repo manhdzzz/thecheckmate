@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS2 Server</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CS2 Server</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="nav-logo">
+            <div class="nav-item theme-logo">
+                <a href="#">
+                    <img src="IMG/copy-icon-2021x2048-5n8s57wy-removebg-preview.png" class="navbar-logo logo-light" alt="logo">
+                </a>
+            </div>
+            <div class="nav-item theme-text">
+                <h1>THE CHECKMATE SERVER CS2</h1>
+            </div>
+            <div class="nav-item theme-logo">
+                <a href="#">
+                    <img src="IMG/copy-icon-2021x2048-5n8s57wy-removebg-preview.png" class="navbar-logo logo-light" alt="logo">
+                </a>
+            </div>
+        </div>
+    </header>
+    </header>
+    <main>
+        <section class="mb-4">
+            <div class="card">
+                <div class="card-header text-center py-3">
+                    <h5 class="mb-0 text-center">
+                        <strong>Servers</strong>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover text-nowrap table-borderless">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Server</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="serverList">
+                                <tr>
+                                    <td>PvP 5v5 for free .............. | by The Checkmate #1</td>
+                                    <td id="server-name1">online</td>
+                                    <td>
+                                        <button class="connect-btn" onclick="openModal('Server 1')">Connect</button>
+                                        <div id="modal" class="modal">
+                                            <div class="modal-content">
+                                              <span class="close" id="closeModal">&times;</span> <!-- Nút đóng "X" -->
+                                              <h3 id="modalTitle">Enter Password</h3>
+                                              <input type="password" id="password" placeholder="Password">
+                                              <button class="connect-btn" onclick="validatePassword()">Submit</button>
+                                              <p id="error-msg" style="color: red; display: none;">Incorrect password</p>
+                                            </div>
+                                          </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Retake for free ................ | by The Checkmate #2</td>
+                                    <td id="server-name2">online</td>
+                                    <td>
+                                        <button class="connect-btn" onclick="openModal('Server 2')">Connect</button>
+                                        <div id="modal" class="modal">
+                                            <div class="modal-content">
+                                              <span class="close" id="closeModal">&times;</span> <!-- Nút đóng "X" -->
+                                              <h3 id="modalTitle">Enter Password</h3>
+                                              <input type="password" id="password" placeholder="Password">
+                                              <button class="connect-btn" onclick="validatePassword()">Submit</button>
+                                              <p id="error-msg" style="color: red; display: none;">Incorrect password</p>
+                                            </div>
+                                          </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>PVP 1v1...................... | by The Checkmate #3</td>
+                                    <td id="server-name3">online</td>
+                                    <td>
+                                        <button class="connect-btn" onclick="openModal('Server 3')">Connect</button>
+                                        <div id="modal" class="modal">
+                                            <div class="modal-content">
+                                              <span class="close" id="closeModal">&times;</span> <!-- Nút đóng "X" -->
+                                              <h3 id="modalTitle">Enter Password</h3>
+                                              <input type="password" id="password" placeholder="Password">
+                                              <button class="connect-btn" onclick="validatePassword()">Submit</button>
+                                              <p id="error-msg" style="color: red; display: none;">Incorrect password</p>
+                                            </div>
+                                          </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>PvP 5v5 server event 1 | by The Checkmate #4</td>
+                                    <td id="server-name4">on</td>
+                                    <td>
+                                        <button class="connect-btn" onclick="openModal('Server 4')">Connect</button>
+                                        <div id="modal" class="modal">
+                                            <div class="modal-content">
+                                              <span class="close" id="closeModal">&times;</span> <!-- Nút đóng "X" -->
+                                              <h3 id="modalTitle">Enter Password</h3>
+                                              <input type="password" id="password" placeholder="Password">
+                                              <button class="connect-btn" onclick="validatePassword()">Submit</button>
+                                              <p id="error-msg" style="color: red; display: none;">Incorrect password</p>
+                                            </div>
+                                          </div>
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td>PvP 5v5 server event 2 | by The Checkmate #5</td>
+                                    <td id="server-name4">on</td>
+                                    <td>
+                                        <button class="connect-btn" onclick="openModal('Server 5')">Connect</button>
+                                        <div id="modal" class="modal">
+                                            <div class="modal-content">
+                                              <span class="close" id="closeModal">&times;</span> <!-- Nút đóng "X" -->
+                                              <h3 id="modalTitle">Enter Password</h3>
+                                              <input type="password" id="password" placeholder="Password">
+                                              <button class="connect-btn" onclick="validatePassword()">Submit</button>
+                                              <p id="error-msg" style="color: red; display: none;">Incorrect password</p>
+                                            </div>
+                                          </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <section class="mb-4">
+                    <div class="card">
+                        <div class="card-header text-center py-3">
+                            <h5 class="mb-0 text-center">
+                                <strong>ModSkins Và liên hệ thuê Server</strong>
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover text-nowrap table-borderless">
+                                    <thead>
+                                        <tr>
+                                        </tr>
+                                    </thead>
+                                        <tr>
+                                            <td>ModSkins</td>
+                                            <td><a href="http://160.25.85.100:27275/" class="link-button">Skins Changer</a></a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Thuê Server</td>
+                                            <td><a href="https://www.facebook.com/nguyenheng2707" class="link-button">Renting</a></td>
+                                        </tr>             
+    </main>
+</body>
+</html>
+
+
+
+
+
+    
