@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - CS2 Server</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .form-control {
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Admin Panel - CS2 Server</h1>
+
+    <h3>Server Management</h3>
+
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Add New Server</h5>
+            <form id="addServerForm">
+                <input type="text" id="serverName" class="form-control" placeholder="Server Name" required>
+                <input type="text" id="serverStatus" class="form-control" placeholder="Status (online/offline)" required>
+                <button type="submit" class="btn btn-primary">Add Server</button>
+            </form>
+        </div>
+    </div>
+
+    <br>
+
+
+    <h3>Current Servers</h3>
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Server</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="serverListAdmin">
+
+                    <tr>
+                        <td>PvP 5v5 for free | by The Checkmate #1</td>
+                        <td>online</td>
+                        <td>
+                            <button class="btn btn-danger" onclick="deleteServer(1)">Delete</button>
+                            <button class="btn btn-warning" onclick="editServer(1)">Edit</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <br>
+
+    <h3>Change Background</h3>
+    <div class="card">
+        <div class="card-body">
+            <input type="text" id="backgroundUrl" class="form-control" placeholder="Enter new background image URL">
+            <button class="btn btn-success" onclick="changeBackground()">Change Background</button>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 <a href="https://fb.me/menjmoi" target="_blank">The Checkmate Server</a></p>
+</footer>
+
+<script>
+    let serverData = [
+        { id: 1, name: 'PvP 5v5 for free | by The Checkmate #1', status: 'online' },
+        { id: 2, name: 'Retake for free | by The Checkmate #2', status: 'online' },
+        { id: 3, name: 'PvP 1v1 | by The Checkmate #3', status: 'online' }
+    ];
+
+    function loadServerList() {
+        let serverList = document.getElementById('serverListAdmin');
+        serverList.innerHTML = '';
+        serverData.forEach((server, index) => {
+            serverList.innerHTML += `
+                <tr>
+                    <td>${server.name}</td>
+                    <td>${server.status}</td>
+                    <td>
+                        <button class="btn btn-danger" onclick="deleteServer(${server.id})">Delete</button>
+                        <button class="btn btn-warning" onclick="editServer(${server.id})">Edit</button>
+                    </td>
+                </tr>`;
+        });
+    }
+
+    document.getElementById('addServerForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const serverName = document.getElementById('serverName').value;
+        const serverStatus = document.getElementById('serverStatus').value;
+        const newServer = { id: serverData.length + 1, name: serverName, status: serverStatus };
+        serverData.push(newServer);
+        loadServerList();
+    });
+
+    function deleteServer(id) {
+        serverData = serverData.filter(server => server.id !== id);
+        loadServerList();
+    }
+
+    function editServer(id) {
+        const server = serverData.find(server => server.id === id);
+        const newStatus = prompt("Enter new status (online/offline):", server.status);
+        if (newStatus) {
+            server.status = newStatus;
+            loadServerList();
+        }
+    }
+
+
+    function changeBackground() {
+        const newUrl = document.getElementById('backgroundUrl').value;
+        if (newUrl) {
+            document.body.style.backgroundImage = `url('${newUrl}')`;
+            alert('Background changed successfully!');
+        } else {
+            alert('Please enter a valid URL.');
+        }
+    }
+
+    window.onload = loadServerList;
+</script>
+
+</body>
+</html>
