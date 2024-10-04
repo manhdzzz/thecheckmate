@@ -1,258 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CS2 Server</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <style>
-
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: url('https://esports-news.co.uk/wp-content/uploads/2023/03/cs2-counter-strike-2-768x291.jpg');
-            color: #ffffff;
-        }
-
-        header {
-            background: #43b7fa;
-            padding: 20px;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: 2.5em;
-            font-weight: bold;
-            color: #ffffff;
-            margin: 0;
-        }
-
-        .nav-logo {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px;
-        }
-
-        .navbar-logo {
-            width: 120px;
-            margin: 0 15px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px;
-        }
-
-        .card {
-            background-color: #d5d5d5;
-            border: none;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-
-        .card-header {
-            background-color: #43b7fa;
-            border-bottom: none;
-        }
-
-        .table th, .table td {
-            color: #000;
-            vertical-align: middle;
-        }
-
-        .section-title {
-            text-align: center;
-            color: #ffcc00;
-        }
-
-        .link-button {
-            display: inline-block;
-            padding: 5px 10px;
-            font-size: 16px;
-            background-color: #ffaa00;
-            border-radius: 5px;
-            color: #fff;
-            text-align: center;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .link-button:hover {
-            background-color: #ffcc00;
-        }
-
-        footer {
-            background: #1a1a1a;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-
-        .connect-btn {
-            background-color: #28a745;
-            color: white;
-            padding: 5px 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .connect-btn.offline {
-            background-color: #dc3545;
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2em;
-            }
-
-            .navbar-logo {
-                width: 80px;
-            }
-
-            .card {
-                margin: 10px 0;
-            }
-
-            .link-button {
-                padding: 8px 15px;
-            }
-        }
-    </style>
+    <title>Student Search</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-
-<header>
-    <div class="nav-logo">
-        <a href="#"><img src="img/logo.png" class="navbar-logo logo-light" alt="logo"></a>
-        <h1>THE CHECKMATE SERVER CS2</h1>
-        <a href="#"><img src="img/logo.png" class="navbar-logo logo-light" alt="logo"></a>
-    </div>
-</header>
-
-<main>
     <div class="container">
-
-        <section>
-            <div class="card">
-                <div class="card-header text-center py-3">
-                    <h5><strong>Servers</strong></h5>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Server</th>
-                                    <th>Status</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody id="serverList">
-                                <tr>
-                                    <td>PvP 5v5 for free | by The Checkmate #1</td>
-                                    <td id="server-name1">online</td>
-                                    <td><button class="connect-btn" onclick="openModal('Server 1')">Connect</button></td>
-                                </tr>
-                                <tr>
-                                    <td>Retake for free | by The Checkmate #2</td>
-                                    <td id="server-name2">online</td>
-                                    <td><button class="connect-btn" onclick="openModal('Server 2')">Connect</button></td>
-                                </tr>
-                                <tr>
-                                    <td>PvP 1v1 | by The Checkmate #3</td>
-                                    <td id="server-name3">online</td>
-                                    <td><button class="connect-btn" onclick="openModal('Server 3')">Connect</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <section>
-            <div class="card">
-                <div class="card-header text-center py-3">
-                    <h5><strong>ModSkins & Server Renting</strong></h5>
-                </div>
-                <div class="card-body">
-                    <table class="table table-hover">
-                        <tbody>
-                            <tr>
-                                <td>ModSkins</td>
-                                <td><a href="http://modskin.thecheckmate.xyz:27275/" class="link-button">Skins Changer</a></td>
-                            </tr>
-                            <tr>
-                                <td>Rent Server</td>
-                                <td><a href="https://www.facebook.com/nguyenheng2707" class="link-button">Renting</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
+        <h2>Search Students</h2>
+        <input type="text" id="search-box" onkeyup="suggest()" placeholder="Nhập lớp (VD: D14CNPM)">
+        <div id="suggestion-box"></div>
+        <button onclick="search()">Tìm kiếm</button>
     </div>
-</main>
 
-<footer>
-    <p>&copy; 2024 <a href="https://fb.me/menjmoi" target="_blank">The Checkmate Server</a></p>
-</footer>
-
-
-<script>
-    let currentServer = ''; 
-    function openModal(serverName) {
-        currentServer = serverName;
-        Swal.fire({
-            icon: 'question',
-            title: `Enter Password for ${serverName}`,
-            input: 'password',
-            inputPlaceholder: 'Password',
-            showCancelButton: true,
-            confirmButtonText: 'Submit',
-            showLoaderOnConfirm: true,
-            preConfirm: (password) => {
-                return new Promise((resolve) => {
-                    setTimeout(() => {
-                        resolve(validatePassword(password));
-                    }, 1000);
-                });
-            },
-            allowOutsideClick: () => !Swal.isLoading()
-        });
-    }
-
-    function validatePassword(password) {
-        const passwords = {
-            'Server 1': '123456',
-            'Server 2': '123456',
-            'Server 3': '123456'
-        };
-
-        const serverAddresses = {
-            'Server 1': 'steam://connect/160.25.85.100:27015',
-            'Server 2': 'steam://connect/160.25.85.100:27017',
-            'Server 3': 'steam://connect/160.25.85.100:27019'
-        };
-
-        if (password === passwords[currentServer]) {
-            Swal.showValidationMessage('Thành công, vui lòng ấn vào ô mở steam để tiếp tục');
-            window.location.href = serverAddresses[currentServer];
-        } else {
-            Swal.showValidationMessage('Mật khẩu sai!');
+    <script>
+        function suggest() {
+            let query = document.getElementById('search-box').value;
+            if (query.length > 0) {
+                fetch('search.php?q=' + query)
+                    .then(response => response.json())
+                    .then(data => {
+                        let suggestionBox = document.getElementById('suggestion-box');
+                        suggestionBox.innerHTML = '';
+                        data.forEach(item => {
+                            let option = document.createElement('div');
+                            option.className = 'suggestion';
+                            option.innerHTML = item.class;
+                            option.onclick = () => {
+                                document.getElementById('search-box').value = item.class;
+                                suggestionBox.innerHTML = '';
+                            };
+                            suggestionBox.appendChild(option);
+                        });
+                    });
+            }
         }
-    }
-</script>
 
+        function search() {
+            let query = document.getElementById('search-box').value;
+            if (query.trim() === '') {
+                Swal.fire('Lỗi', 'Vui lòng nhập từ khóa!', 'error');
+                return;
+            }
+
+            fetch('search.php?search=' + query)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length > 0) {
+                        let result = '<table><tr><th>ID</th><th>Họ Tên</th><th>Lớp</th><th>Khoa</th></tr>';
+                        data.forEach(student => {
+                            result += `<tr><td>${student.id}</td><td>${student.last_name} ${student.first_name}</td><td>${student.class}</td><td>${student.department_name}</td></tr>`;
+                        });
+                        result += '</table>';
+                        Swal.fire({
+                            title: 'Kết quả tìm kiếm',
+                            html: result,
+                            icon: 'success'
+                        });
+                    } else {
+                        Swal.fire('Không tìm thấy', 'Không có sinh viên nào phù hợp.', 'info');
+                    }
+                });
+        }
+    </script>
 </body>
 </html>
