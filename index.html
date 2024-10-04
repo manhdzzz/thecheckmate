@@ -2,68 +2,112 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Search</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Tìm kiếm Thông tin Sinh viên</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/10.16.7/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 50px;
+            background-color: #f8f9fa;
+        }
+        .search-container {
+            margin: 0 auto;
+            max-width: 600px;
+            position: relative;
+        }
+        .suggestions {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+            position: absolute;
+            background-color: #fff;
+            width: 100%;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+        .suggestion-item {
+            padding: 10px;
+            cursor: pointer;
+        }
+        .suggestion-item:hover {
+            background-color: #f0f0f0;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        #searchBtn {
+            display: block;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Search Students</h2>
-        <input type="text" id="search-box" onkeyup="suggest()" placeholder="Nhập lớp (VD: D14CNPM)">
-        <div id="suggestion-box"></div>
-        <button onclick="search()">Tìm kiếm</button>
+
+<div class="search-container">
+    <h2>Tìm kiếm Thông tin Sinh viên</h2>
+    <div class="form-group">
+        <input type="text" id="search" class="form-control" placeholder="Nhập lớp (ví dụ: D14CNPM)">
+        <div id="suggestions" class="suggestions"></div>
     </div>
+    <button id="searchBtn" class="btn btn-primary">Tìm kiếm</button>
+</div>
 
-    <script>
-        function suggest() {
-            let query = document.getElementById('search-box').value;
-            if (query.length > 0) {
-                fetch('search.php?q=' + query)
-                    .then(response => response.json())
-                    .then(data => {
-                        let suggestionBox = document.getElementById('suggestion-box');
-                        suggestionBox.innerHTML = '';
-                        data.forEach(item => {
-                            let option = document.createElement('div');
-                            option.className = 'suggestion';
-                            option.innerHTML = item.class;
-                            option.onclick = () => {
-                                document.getElementById('search-box').value = item.class;
-                                suggestionBox.innerHTML = '';
-                            };
-                            suggestionBox.appendChild(option);
-                        });
-                    });
-            }
-        }
-
-        function search() {
-            let query = document.getElementById('search-box').value;
-            if (query.trim() === '') {
-                Swal.fire('Lỗi', 'Vui lòng nhập từ khóa!', 'error');
-                return;
-            }
-
-            fetch('search.php?search=' + query)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.length > 0) {
-                        let result = '<table><tr><th>ID</th><th>Họ Tên</th><th>Lớp</th><th>Khoa</th></tr>';
-                        data.forEach(student => {
-                            result += `<tr><td>${student.id}</td><td>${student.last_name} ${student.first_name}</td><td>${student.class}</td><td>${student.department_name}</td></tr>`;
-                        });
-                        result += '</table>';
-                        Swal.fire({
-                            title: 'Kết quả tìm kiếm',
-                            html: result,
-                            icon: 'success'
-                        });
-                    } else {
-                        Swal.fire('Không tìm thấy', 'Không có sinh viên nào phù hợp.', 'info');
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    $(document).ready(function() {
+        // Gợi ý khi nhập
+        $('#search').on('input', function() {
+            var query = $(this).val();
+            if (query.length >= 2) {
+                $.ajax({
+                    url: 'suggest.php',
+                    method: 'GET',
+                    data: {query: query},
+                    success: function(data) {
+                        $('#suggestions').html(data);
                     }
                 });
-        }
-    </script>
+            } else {
+                $('#suggestions').html('');
+            }
+        });
+
+        // Chọn gợi ý
+        $(document).on('click', '.suggestion-item', function() {
+            $('#search').val($(this).text());
+            $('#suggestions').html('');
+        });
+
+        // Tìm kiếm
+        $('#searchBtn').click(function() {
+            var searchValue = $('#search').val();
+            if (searchValue == '') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Vui lòng nhập từ khóa tìm kiếm!',
+                });
+            } else {
+                $.ajax({
+                    url: 'search.php',
+                    method: 'GET',
+                    data: {search: searchValue},
+                    success: function(data) {
+                        Swal.fire({
+                            title: 'Kết quả tìm kiếm',
+                            html: data,
+                            icon: 'info',
+                            width: '80%',
+                        });
+                    }
+                });
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
