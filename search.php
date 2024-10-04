@@ -12,14 +12,16 @@ try {
         $query = $_GET['q'];
         $stmt = $conn->prepare("SELECT DISTINCT class FROM students WHERE class LIKE :query LIMIT 5");
         $stmt->execute(['query' => '%' . $query . '%']);
-        echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($results);
     }
 
     if (isset($_GET['search'])) {
         $search = $_GET['search'];
         $stmt = $conn->prepare("SELECT * FROM students WHERE class LIKE :search");
         $stmt->execute(['search' => '%' . $search . '%']);
-        echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($results);
     }
 
 } catch (PDOException $e) {
