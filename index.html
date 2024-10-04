@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Search</title>
+    <title>Tìm kiếm sinh viên</title>
     <link rel="stylesheet" href="styles.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <div class="container">
-        <h2>Search Students</h2>
+        <h2>Tìm kiếm sinh viên</h2>
         <input type="text" id="search-box" onkeyup="suggest()" placeholder="Nhập lớp (VD: D14CNPM)">
         <div id="suggestion-box"></div>
         <button onclick="search()">Tìm kiếm</button>
@@ -19,7 +19,7 @@
         function suggest() {
             let query = document.getElementById('search-box').value;
             if (query.length > 0) {
-                fetch('search.php?q=' + query)
+                fetch('search.php?q=' + encodeURIComponent(query))
                     .then(response => response.json())
                     .then(data => {
                         let suggestionBox = document.getElementById('suggestion-box');
@@ -35,6 +35,8 @@
                             suggestionBox.appendChild(option);
                         });
                     });
+            } else {
+                document.getElementById('suggestion-box').innerHTML = '';
             }
         }
 
@@ -45,7 +47,7 @@
                 return;
             }
 
-            fetch('search.php?search=' + query)
+            fetch('search.php?search=' + encodeURIComponent(query))
                 .then(response => response.json())
                 .then(data => {
                     if (data.length > 0) {
